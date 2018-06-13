@@ -1,6 +1,6 @@
-# IonicTabs
+# Angular Ionic
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4. It uses ionic-angular framework 3.9.2 as the UI framework.
 
 ## Development server
 
