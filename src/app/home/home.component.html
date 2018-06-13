@@ -1,0 +1,56 @@
+<!-- Clear the browser cache and restart to refresh the changes -->
+<ion-header>
+  <ion-navbar align-title="center" #content>
+    <ion-title>{{ title }}</ion-title>
+    <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-tabs selectedIndex="0" #tabsRef (ionChange)="tabChanged($event)">
+    <ion-tab [root]="tab0Root" tabTitle="Dashboard" tabIcon="water" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="tab1Root" tabTitle="Leads" tabIcon="leaf" tabBadge="5" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Activities" tabIcon="flame"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="Goals" tabIcon="magnet"></ion-tab>
+  </ion-tabs>
+</ion-content>
+
+<ion-menu side="left" type="overlay" [content]="content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Side Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+          <ion-item>
+            Close Side Menu
+            <button ion-button outline item-end icon-left menuClose>
+                <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-item>
+          <ion-item>
+            Logout
+            <button ion-button outline item-end icon-left (click)="doLogout()">Logout</button>
+          </ion-item>
+          <ion-item>
+            Dashboard
+            <button ion-button outline item-end icon-left (click)="changeTab(0)">Dashboard</button>
+          </ion-item>
+          <ion-item>
+            Leads
+            <button ion-button outline item-end icon-left (click)="changeTab(1)">Leads</button>
+          </ion-item>
+          <ion-item>
+            Activities
+            <button ion-button outline item-end icon-left (click)="changeTab(2)">Activities</button>
+          </ion-item>
+          <ion-item>
+            Goals
+            <button ion-button outline item-end icon-left (click)="changeTab(3)">Goals</button>
+          </ion-item>
+      </ion-list>
+    </ion-content>
+</ion-menu>

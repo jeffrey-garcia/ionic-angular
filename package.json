@@ -21,7 +21,12 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "@ionic-native/core": "^4.7.0",
+    "@ionic-native/splash-screen": "^4.7.0",
+    "@ionic-native/status-bar": "^4.7.0",
     "core-js": "^2.4.1",
+    "ionic-angular": "^3.9.2",
+    "ionicons": "^4.1.2",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },

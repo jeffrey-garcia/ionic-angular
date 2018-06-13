@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Leads List</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list id="reminder">
+        <ion-item-sliding #item>
+          <ion-item>
+            Missing details
+            <ion-badge item-end color="danger">3</ion-badge>
+          </ion-item>	
+          <ion-item-options side="right">
+            <button ion-button color="danger" (click)="hideReminder(true)">Hide</button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>	
+</ion-content>  
