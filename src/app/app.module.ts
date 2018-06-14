@@ -4,6 +4,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 import { AppComponent } from './app.component';
 import { LeadsComponent } from './leads/leads.component';
@@ -12,6 +13,7 @@ import { GoalsComponent } from './goals/goals.component';
 import { HomeComponent } from './home/home.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { LeadsListComponent } from './leads/leads-list/leads-list.component';
+import { GoalsMonthlyViewComponent } from './goals/goals-monthly-view/goals-monthly-view.component';
 
 @NgModule({
   declarations: [
@@ -21,11 +23,13 @@ import { LeadsListComponent } from './leads/leads-list/leads-list.component';
     GoalsComponent,
     HomeComponent,
     ActivitiesComponent,
-    LeadsListComponent
+    LeadsListComponent,
+    GoalsMonthlyViewComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(AppComponent)
+    IonicModule.forRoot(AppComponent),
+    SuperTabsModule.forRoot()
   ],
   entryComponents: [
     AppComponent,
@@ -34,7 +38,8 @@ import { LeadsListComponent } from './leads/leads-list/leads-list.component';
     GoalsComponent,
     DashboardComponent,
     ActivitiesComponent,
-    LeadsListComponent
+    LeadsListComponent,
+    GoalsMonthlyViewComponent
   ],
   providers: [
     StatusBar,

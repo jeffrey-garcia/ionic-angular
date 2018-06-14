@@ -4,8 +4,8 @@ import { App, Tab, Tabs, MenuController } from 'ionic-angular';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LeadsComponent } from '../leads/leads.component';
-import { GoalsComponent } from '../goals/goals.component';
 import { ActivitiesComponent } from '../activities/activities.component';
+import { GoalsComponent } from '../goals/goals.component';
 
 @Component({
   selector: 'app-home',
