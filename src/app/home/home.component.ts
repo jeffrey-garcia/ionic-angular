@@ -6,6 +6,7 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LeadsComponent } from '../leads/leads.component';
 import { ActivitiesComponent } from '../activities/activities.component';
 import { GoalsComponent } from '../goals/goals.component';
+import { LeadsSearchComponent } from '../leads/leads-search/leads-search.component'
 
 @Component({
   selector: 'app-home',
@@ -41,6 +42,8 @@ export class HomeComponent implements OnInit {
   tab2Root:any = this.tabPages[2].component;
   tab3Root:any = this.tabPages[3].component;
 
+  leads_search:any = LeadsSearchComponent;
+
   constructor(
     private app:App,
     private menuCtrl: MenuController
@@ -49,13 +52,14 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   public openPage(page:any): void {
+    // console.log("open page: " + page);
     /* this will open the new page outside the tabs view */
     let navCtrlList = this.app.getRootNavs();
     // navCtrlList.forEach(item => {
     //   console.log(item);
     // })
     if (navCtrlList[0] != null) {
-      navCtrlList[0].push(DashboardComponent, {}, {animate: true, direction: 'forward'});
+      navCtrlList[0].push(page, {}, {animate: true, direction: 'forward'});
     }
   }
 
@@ -67,7 +71,17 @@ export class HomeComponent implements OnInit {
 
   /* callback when the tab page is changed */
   public tabChanged(selectedTab:Tab): void { 
-    // console.log("tab changed: " + selectedTab.index);
+    //console.log("tab changed: " + selectedTab.index);
     this.title = this.tabPages[selectedTab.index].title;
+    
+    //console.log("tab changed: " + this.title);
+    if (this.title != "Leads") {
+      // show search icon and filter icon ONLY in Leads Page
+      document.getElementById("searchIcon").style.display = "none";
+      document.getElementById("filterIcon").style.display = "none";
+    } else {
+      document.getElementById("searchIcon").style.display = "inline";
+      document.getElementById("filterIcon").style.display = "inline";
+    }
   }
 }

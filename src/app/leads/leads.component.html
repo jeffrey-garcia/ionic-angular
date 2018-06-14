@@ -1,5 +1,32 @@
 <!-- Clear the browser cache and restart to refresh the changes -->
 <ion-content>
   leads works!
-  <button ion-button block (click)="openPage(leads_list)">Open Leads List Page</button>
+  
+  <ion-list id="reminder">
+    <ion-item-sliding #item>
+      <ion-item>
+        Missing details
+        <ion-badge item-end color="danger">3</ion-badge>
+      </ion-item>	
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="hideReminder(true)">Hide</button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <button ion-button block (click)="openPage(leads_create)">Open Create List Page</button>
+
+  <ion-fab right bottom>
+    <button ion-fab><ion-icon name="add"></ion-icon></button>
+    <ion-fab-list side="top">
+      <button ion-fab>
+        <ion-label>Create Lead</ion-label>
+        <ion-icon name="person-add"></ion-icon>
+      </button>      
+      <button ion-fab>
+        <ion-label>Import Contacts</ion-label>
+        <ion-icon name="download"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

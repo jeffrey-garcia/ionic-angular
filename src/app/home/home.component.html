@@ -1,10 +1,25 @@
 <!-- Clear the browser cache and restart to refresh the changes -->
 <ion-header>
   <ion-navbar align-title="center" #content>
-    <ion-title>{{ title }}</ion-title>
-    <button ion-button menuToggle icon-only>
+    <ion-buttons left>
+      <button ion-button menuToggle icon-only>
         <ion-icon name='menu'></ion-icon>
-    </button>
+      </button>
+    </ion-buttons>
+
+    <ion-title>{{ title }}</ion-title>
+
+    <ion-buttons id="searchIcon" right>
+        <button ion-button icon-only (click)="openPage(leads_search)">
+          <ion-icon name='search'></ion-icon>
+        </button>
+    </ion-buttons>
+
+    <ion-buttons id="filterIcon" right>
+        <button ion-button icon-only (click)="openPage(leads_filter)">
+          <ion-icon name='funnel'></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -27,29 +42,39 @@
       <ion-list>
           <ion-item>
             Close Side Menu
-            <button ion-button outline item-end icon-left menuClose>
+            <button ion-button item-end icon-only clear menuClose>
                 <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
           <ion-item>
             Logout
-            <button ion-button outline item-end icon-left (click)="doLogout()">Logout</button>
+            <button ion-button item-end icon-only clear (click)="doLogout()">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-item>
           <ion-item>
             Dashboard
-            <button ion-button outline item-end icon-left (click)="changeTab(0)">Dashboard</button>
+            <button ion-button item-end icon-only clear (click)="changeTab(0)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-item>
           <ion-item>
             Leads
-            <button ion-button outline item-end icon-left (click)="changeTab(1)">Leads</button>
+            <button ion-button item-end icon-only clear (click)="changeTab(1)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-item>
           <ion-item>
             Activities
-            <button ion-button outline item-end icon-left (click)="changeTab(2)">Activities</button>
+            <button ion-button item-end icon-only clear (click)="changeTab(2)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-item>
           <ion-item>
             Goals
-            <button ion-button outline item-end icon-left (click)="changeTab(3)">Goals</button>
+            <button ion-button item-end icon-only clear (click)="changeTab(3)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-item>
       </ion-list>
     </ion-content>

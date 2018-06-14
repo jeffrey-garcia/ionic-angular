@@ -12,8 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GoalsComponent } from './goals/goals.component';
 import { HomeComponent } from './home/home.component';
 import { ActivitiesComponent } from './activities/activities.component';
-import { LeadsListComponent } from './leads/leads-list/leads-list.component';
 import { GoalsMonthlyViewComponent } from './goals/goals-monthly-view/goals-monthly-view.component';
+import { LeadsCreateComponent } from './leads/leads-create/leads-create.component';
+import { LeadsSearchComponent } from './leads/leads-search/leads-search.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,9 @@ import { GoalsMonthlyViewComponent } from './goals/goals-monthly-view/goals-mont
     GoalsComponent,
     HomeComponent,
     ActivitiesComponent,
-    LeadsListComponent,
-    GoalsMonthlyViewComponent
+    GoalsMonthlyViewComponent,
+    LeadsCreateComponent,
+    LeadsSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +40,9 @@ import { GoalsMonthlyViewComponent } from './goals/goals-monthly-view/goals-mont
     GoalsComponent,
     DashboardComponent,
     ActivitiesComponent,
-    LeadsListComponent,
-    GoalsMonthlyViewComponent
+    GoalsMonthlyViewComponent,
+    LeadsCreateComponent,
+    LeadsSearchComponent
   ],
   providers: [
     StatusBar,

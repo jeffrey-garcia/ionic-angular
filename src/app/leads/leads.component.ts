@@ -2,32 +2,24 @@ import { Component, OnInit } from '@angular/core';
 
 import { App, NavController } from 'ionic-angular';
 
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { GoalsComponent } from '../goals/goals.component';
-
-import { LeadsListComponent } from './leads-list/leads-list.component'
+import { LeadsCreateComponent } from './leads-create/leads-create.component';
 
 @Component({
   selector: 'app-leads',
   templateUrl: './leads.component.html',
-  styleUrls: ['./leads.component.css']
+  styleUrls: ['./leads.component.css', './leads.component.scss']
 })
 export class LeadsComponent implements OnInit {
 
-  private dashboard:any;
-  private leads:any;
-  private goals:any;
+  private isReminderDismissed:boolean = false;
 
-  private leads_list:any;
+  private leads_create:any;
   
   constructor(
     private app:App,
     private navCtrl:NavController
   ) { 
-    this.dashboard = DashboardComponent;
-    this.leads = LeadsComponent;
-    this.goals = GoalsComponent;
-    this.leads_list = LeadsListComponent;
+    this.leads_create = LeadsCreateComponent
   }
 
   ngOnInit() {
@@ -50,5 +42,18 @@ export class LeadsComponent implements OnInit {
     
     // this will open the new page within the tabs view
     // this.navCtrl.push(DashboardComponent, {}, {animate: true, direction: 'forward'});
+  }
+
+  hideReminder(shouldDimiss:boolean): void {
+    if (!this.isReminderDismissed && shouldDimiss) {
+      this.isReminderDismissed = shouldDimiss;
+    }
+    document.getElementById('reminder').style.display = 'none';
+  }
+
+  showReminder(): void {
+    if (!this.isReminderDismissed) {
+      document.getElementById('reminder').style.display = 'inline';
+    }
   }
 }
