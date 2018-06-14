@@ -11,7 +11,7 @@ import { LeadsSearchComponent } from '../leads/leads-search/leads-search.compone
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css','./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   @ViewChild('tabsRef') tabsRef: Tabs;
@@ -73,7 +73,7 @@ export class HomeComponent implements OnInit {
   public tabChanged(selectedTab:Tab): void { 
     //console.log("tab changed: " + selectedTab.index);
     this.title = this.tabPages[selectedTab.index].title;
-    
+
     //console.log("tab changed: " + this.title);
     if (this.title != "Leads") {
       // show search icon and filter icon ONLY in Leads Page
