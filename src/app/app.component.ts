@@ -14,6 +14,9 @@ import { HomeComponent } from './home/home.component';
 export class AppComponent {
   rootPage:any = HomeComponent;
 
+  // Configuration of the time picker (format 12H with a default date and time)
+  //private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
+
   constructor(
     private platform:Platform,
     private statusBar:StatusBar,

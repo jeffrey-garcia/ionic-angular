@@ -2,7 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDatepickerModule, MatNativeDateModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { 
+  MatDatepickerModule, 
+  MatNativeDateModule, 
+  MatFormFieldModule, 
+  MatInputModule,
+  MatCardModule,
+  MatSnackBarModule 
+} from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
+import { Angular5TimePickerModule } from 'angular5-time-picker';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -38,6 +47,10 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    Angular5TimePickerModule,
+    MatCardModule,
+    MatSnackBarModule,
+    MatIconModule,
     IonicModule.forRoot(AppComponent, 
       {mode: 'md'} // enforce the theme to material design regardless of running platform
     ),
@@ -64,4 +77,5 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
   ],
   bootstrap: [IonicApp]
 })
-export class AppModule { }
+export class AppModule { 
+}
