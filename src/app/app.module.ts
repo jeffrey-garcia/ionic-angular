@@ -30,7 +30,9 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(AppComponent),
+    IonicModule.forRoot(AppComponent, 
+      {mode: 'md'} // enforce the theme to material design regardless of running platform
+    ),
     SuperTabsModule.forRoot()
   ],
   entryComponents: [
