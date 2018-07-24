@@ -43,6 +43,7 @@ export class HomeComponent implements OnInit {
   tab3Root:any = this.tabPages[3].component;
 
   leads_search:any = LeadsSearchComponent;
+  leads_filter:any = LeadsSearchComponent;
 
   constructor(
     private app:App,
@@ -83,5 +84,10 @@ export class HomeComponent implements OnInit {
       document.getElementById("searchIcon").style.display = "inline";
       document.getElementById("filterIcon").style.display = "inline";
     }
+  }
+
+  /* invoke logout */
+  public doLogout() {
+    // put the implementation here
   }
 }

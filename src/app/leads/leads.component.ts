@@ -13,7 +13,7 @@ export class LeadsComponent implements OnInit {
 
   private isReminderDismissed:boolean = false;
 
-  private leads_create:any;
+  public leads_create:any;
   
   constructor(
     private app:App,
