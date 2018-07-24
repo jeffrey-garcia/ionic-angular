@@ -1,0 +1,12 @@
+ion-header {
+    ion-navbar {
+        &.cmp {
+            ion-title {
+                &.blackTitle {
+                    background: black;
+                    border-bottom: #424559 solid 1px; 
+                }
+            }
+        }
+    }
+}
