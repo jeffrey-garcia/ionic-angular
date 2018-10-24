@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ionic-native/core": "^4.7.0",
+    "@ionic-native/push": "^4.16.0",
     "@ionic-native/splash-screen": "^4.7.0",
     "@ionic-native/status-bar": "^4.7.0",
     "angular5-time-picker": "^1.0.8",

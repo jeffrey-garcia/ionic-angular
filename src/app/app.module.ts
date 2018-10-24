@@ -17,6 +17,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import { Push } from '@ionic-native/push';
 
 import { AppComponent } from './app.component';
 import { LeadsComponent } from './leads/leads.component';
@@ -70,6 +71,7 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
   providers: [
     StatusBar,
     SplashScreen,
+    Push,
     { 
       provide: ErrorHandler, 
       useClass: IonicErrorHandler

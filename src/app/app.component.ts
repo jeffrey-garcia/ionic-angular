@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 import { HomeComponent } from './home/home.component';
 
@@ -18,16 +19,38 @@ export class AppComponent {
   //private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
 
   constructor(
+    private ngZone: NgZone,
     private platform:Platform,
     private statusBar:StatusBar,
-    private splashScreen:SplashScreen
+    private splashScreen:SplashScreen,
+    private push: Push
   ) {
-    platform.ready().then(() => {
+    window['ngAppComponent'] = {
+      zone: this.ngZone,
+      component: this,
+      cordovaReady: () => this.cordovaReady()
+    };
+  }
+
+  cordovaReady():void {
+    // make sure the cordova device ready event is fired before invoking ionic plugin
+    console.log("cordova device ready event received by Angular");
+    this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       console.log("ionic platform ready");
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+
+      // to check if we have permission
+      this.push.hasPermission()
+      .then((res: any) => {
+        if (res.isEnabled) {
+          console.log('We have permission to send push notifications');
+        } else {
+          console.log('We do not have permission to send push notifications');
+        }
+      });
     });
   }
 }
