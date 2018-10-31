@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 import { HomeComponent } from './home/home.component';
+import { RestService } from './rest.service';
 
 @Component({
   selector: 'ion-app',
@@ -23,12 +24,14 @@ export class AppComponent {
     private platform:Platform,
     private statusBar:StatusBar,
     private splashScreen:SplashScreen,
-    private push: Push
+    private push: Push,
+    private restService: RestService
   ) {
     window['ngAppComponent'] = {
       zone: this.ngZone,
       component: this,
-      cordovaReady: () => this.cordovaReady()
+      cordovaReady: () => this.cordovaReady(),
+      notificationReceived: () => this.getNotifications()
     };
   }
 
@@ -43,14 +46,35 @@ export class AppComponent {
       this.splashScreen.hide();
 
       // to check if we have permission
-      this.push.hasPermission()
-      .then((res: any) => {
-        if (res.isEnabled) {
-          console.log('We have permission to send push notifications');
-        } else {
-          console.log('We do not have permission to send push notifications');
-        }
-      });
+      // this.push.hasPermission()
+      // .then((res: any) => {
+      //   if (res.isEnabled) {
+      //     console.log('We have permission to send push notifications');
+      //   } else {
+      //     console.log('We do not have permission to send push notifications');
+      //   }
+      // });
+
+      this.getNotifications();
     });
   }
+
+  getNotifications() {
+    console.log("getNotifications from device...");
+    this.restService.getNotifications().subscribe(
+      (response) => {
+        let jsonString = JSON.stringify(response);
+        console.log(jsonString);
+        
+        // handle the UI presentation
+        alert(jsonString);
+        
+      },
+      (error) => {
+        // error handle
+        console.log(error);
+      }
+    )
+  }
+
 }

@@ -50,7 +50,9 @@ export class HomeComponent implements OnInit {
     private menuCtrl: MenuController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   public openPage(page:any): void {
     // console.log("open page: " + page);
