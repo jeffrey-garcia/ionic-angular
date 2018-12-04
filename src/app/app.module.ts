@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
@@ -29,6 +30,8 @@ import { GoalsMonthlyViewComponent } from './goals/goals-monthly-view/goals-mont
 import { LeadsCreateComponent } from './leads/leads-create/leads-create.component';
 import { LeadsSearchComponent } from './leads/leads-search/leads-search.component';
 
+import { RestService } from './rest.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +55,7 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
     MatCardModule,
     MatSnackBarModule,
     MatIconModule,
+    HttpClientModule,
     IonicModule.forRoot(AppComponent, 
       {mode: 'md'} // enforce the theme to material design regardless of running platform
     ),
@@ -75,7 +79,8 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
     { 
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
-    }
+    },
+    RestService
   ],
   bootstrap: [IonicApp]
 })
