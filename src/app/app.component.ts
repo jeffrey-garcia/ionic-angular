@@ -13,7 +13,7 @@ import { HomeComponent } from './home/home.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  rootPage:any = HomeComponent;
+  rootPage:any;
 
   // Configuration of the time picker (format 12H with a default date and time)
   //private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
@@ -51,6 +51,11 @@ export class AppComponent {
           console.log('We do not have permission to send push notifications');
         }
       });
+
+      this.ngZone.run(() => {
+        console.log("navigating to Home Component until Cordova is ready");
+        this.rootPage = HomeComponent;
+      })
     });
   }
 }
