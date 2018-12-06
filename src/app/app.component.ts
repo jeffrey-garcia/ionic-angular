@@ -1,6 +1,6 @@
 import { Component, NgZone } from '@angular/core';
 
-import { Platform } from 'ionic-angular';
+import { Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
@@ -8,6 +8,7 @@ import { Push, PushObject, PushOptions } from '@ionic-native/push';
 import { HomeComponent } from './home/home.component';
 import { RestService } from './rest.service';
 import { environment } from '../environments/environment';
+import { ActivitiesComponent } from './activities/activities.component';
 
 @Component({
   selector: 'ion-app',
@@ -26,7 +27,8 @@ export class AppComponent {
     private statusBar:StatusBar,
     private splashScreen:SplashScreen,
     private push: Push,
-    private restService: RestService
+    private restService: RestService,
+    private events : Events
   ) {
     console.log(`creating ${this.constructor.name}`);
 
@@ -49,6 +51,12 @@ export class AppComponent {
         }, 5000);
       });
     }
+
+    this.events.subscribe("LOGOUT",() => {
+      this.ngZone.run(() => {
+        this.rootPage = ActivitiesComponent
+      });
+    });
   }
 
   cordovaReady():void {

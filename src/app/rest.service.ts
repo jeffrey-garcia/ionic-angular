@@ -1,6 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+
+import { Observable } from 'rxjs/';
+import { delay, tap } from 'rxjs/operators';
 
 @Injectable()
 export class RestService {
@@ -19,6 +21,10 @@ export class RestService {
         } 
       }
     );
+  }
+
+  logoutStub(): Observable<any> {
+    return Observable.of({status:'success'}).pipe(delay(2500)) // simulate success response
   }
 
 }

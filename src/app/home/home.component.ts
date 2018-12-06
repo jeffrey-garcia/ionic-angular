@@ -1,12 +1,13 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { App, Tab, Tabs, MenuController } from 'ionic-angular';
+import { App, Tab, Tabs, MenuController, Events } from 'ionic-angular';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LeadsComponent } from '../leads/leads.component';
 import { ActivitiesComponent } from '../activities/activities.component';
 import { GoalsComponent } from '../goals/goals.component';
 import { LeadsSearchComponent } from '../leads/leads-search/leads-search.component'
+import { RestService } from '../rest.service';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +48,9 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private app:App,
-    private menuCtrl: MenuController
+    private menuCtrl: MenuController,
+    private events: Events,
+    private restService: RestService
   ) { }
 
   ngOnInit() {
@@ -91,5 +94,10 @@ export class HomeComponent implements OnInit {
   /* invoke logout */
   public doLogout() {
     // put the implementation here
+    this.restService.logoutStub().subscribe(
+      (response) => {
+        this.events.publish('LOGOUT');
+      }
+    )
   }
 }
