@@ -31,6 +31,7 @@ import { LeadsCreateComponent } from './leads/leads-create/leads-create.componen
 import { LeadsSearchComponent } from './leads/leads-search/leads-search.component';
 
 import { RestService } from './rest.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { RestService } from './rest.service';
     ActivitiesComponent,
     GoalsMonthlyViewComponent,
     LeadsCreateComponent,
-    LeadsSearchComponent
+    LeadsSearchComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { RestService } from './rest.service';
     MatSnackBarModule,
     MatIconModule,
     HttpClientModule,
-    IonicModule.forRoot(AppComponent, 
+    IonicModule.forRoot(
+      AppComponent, 
       {mode: 'md'} // enforce the theme to material design regardless of running platform
     ),
     SuperTabsModule.forRoot()
@@ -70,7 +73,8 @@ import { RestService } from './rest.service';
     ActivitiesComponent,
     GoalsMonthlyViewComponent,
     LeadsCreateComponent,
-    LeadsSearchComponent
+    LeadsSearchComponent,
+    LoginComponent
   ],
   providers: [
     StatusBar,

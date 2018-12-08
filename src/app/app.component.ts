@@ -6,9 +6,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 import { HomeComponent } from './home/home.component';
-import { RestService } from './rest.service';
+import { RestService, STATUS } from './rest.service';
 import { environment } from '../environments/environment';
 import { ActivitiesComponent } from './activities/activities.component';
+import { LoginComponent } from './login/login.component';
+
+
 
 @Component({
   selector: 'ion-app',
@@ -16,7 +19,7 @@ import { ActivitiesComponent } from './activities/activities.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  rootPage:any;
+  rootPage:any = LoginComponent;
 
   // Configuration of the time picker (format 12H with a default date and time)
   //private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
@@ -43,18 +46,26 @@ export class AppComponent {
   ngOnInit(): void {
     console.log(`ngOnInit ${this.constructor.name}`);
 
-    if (environment.production == false) {
-      this.ngZone.run(() => {
-        console.log("debug mode: hard delay 5s before redirect to main page");
-        setTimeout(()=> {
-          this.cordovaReady();
-        }, 5000);
-      });
-    }
+    //this.rootPage = LoginComponent
 
-    this.events.subscribe("LOGOUT",() => {
+    // if (environment.production == false) {
+    //   this.ngZone.run(() => {
+    //     console.log("debug mode: hard delay 5s before redirect to main page");
+    //     setTimeout(()=> {
+    //       this.cordovaReady();
+    //     }, 5000);
+    //   });
+    // }
+
+    this.events.subscribe(STATUS.LOGIN_COMPLETED,() => {
       this.ngZone.run(() => {
-        this.rootPage = ActivitiesComponent
+        this.rootPage = HomeComponent
+      });
+    });
+
+    this.events.subscribe(STATUS.LOGOUT_COMPLETED,() => {
+      this.ngZone.run(() => {
+        this.rootPage = LoginComponent
       });
     });
   }
@@ -85,7 +96,7 @@ export class AppComponent {
     });
 
     this.ngZone.run(() => {
-      this.rootPage = HomeComponent;
+      this.rootPage = LoginComponent;
     });
   }
 

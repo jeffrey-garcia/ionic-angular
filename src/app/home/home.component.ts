@@ -7,7 +7,7 @@ import { LeadsComponent } from '../leads/leads.component';
 import { ActivitiesComponent } from '../activities/activities.component';
 import { GoalsComponent } from '../goals/goals.component';
 import { LeadsSearchComponent } from '../leads/leads-search/leads-search.component'
-import { RestService } from '../rest.service';
+import { RestService, AUTH_STATUS } from '../rest.service';
 
 @Component({
   selector: 'app-home',
@@ -91,13 +91,12 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  /* invoke logout */
   public doLogout() {
-    // put the implementation here
     this.restService.logoutStub().subscribe(
-      (response) => {
-        this.events.publish('LOGOUT');
+      (response:AUTH_STATUS) => {
+        this.events.publish(response.status);
       }
     )
   }
+
 }
