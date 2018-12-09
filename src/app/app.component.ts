@@ -19,8 +19,8 @@ import { LoginComponent } from './login/login.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  rootPage:any = LoginComponent;
-
+  rootPage:any;
+  
   // Configuration of the time picker (format 12H with a default date and time)
   //private config = { hour: 7, minute: 15, meriden: 'PM', format: 12 };
 
@@ -46,24 +46,31 @@ export class AppComponent {
   ngOnInit(): void {
     console.log(`ngOnInit ${this.constructor.name}`);
 
-    //this.rootPage = LoginComponent
-
     // if (environment.production == false) {
-    //   this.ngZone.run(() => {
-    //     console.log("debug mode: hard delay 5s before redirect to main page");
-    //     setTimeout(()=> {
-    //       this.cordovaReady();
-    //     }, 5000);
-    //   });
+      // console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
+      // if (NgZone.isInAngularZone()) {
+      //   this.rootPage = LoginComponent
+      // } else {
+      //   this.ngZone.run(() => {
+      //     this.rootPage = LoginComponent
+      //   });
+      // }
     // }
 
+    console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
+    this.ngZone.run(() => {
+      this.rootPage = LoginComponent
+    });
+    
     this.events.subscribe(STATUS.LOGIN_COMPLETED,() => {
+      console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
       this.ngZone.run(() => {
         this.rootPage = HomeComponent
       });
     });
 
     this.events.subscribe(STATUS.LOGOUT_COMPLETED,() => {
+      console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
       this.ngZone.run(() => {
         this.rootPage = LoginComponent
       });
@@ -95,9 +102,10 @@ export class AppComponent {
       // this.getNotifications();
     });
 
-    this.ngZone.run(() => {
-      this.rootPage = LoginComponent;
-    });
+    // console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
+    // this.ngZone.run(() => {
+    //   this.rootPage = LoginComponent;
+    // });
   }
 
   getNotifications() {

@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 
-import { App, Tab, Tabs, MenuController, Events } from 'ionic-angular';
+import { App, Tab, Tabs, MenuController, Events, LoadingController } from 'ionic-angular';
 
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { LeadsComponent } from '../leads/leads.component';
@@ -15,6 +15,12 @@ import { RestService, AUTH_STATUS } from '../rest.service';
   styleUrls: ['./home.component.css','./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private loading = this.loadingCtrl.create({
+    spinner: 'ios',
+    cssClass: 'my-loading-class',
+    dismissOnPageChange: true
+  });
+
   @ViewChild('tabsRef') tabsRef: Tabs;
 
   title:string = "";
@@ -50,11 +56,18 @@ export class HomeComponent implements OnInit {
     private app:App,
     private menuCtrl: MenuController,
     private events: Events,
-    private restService: RestService
-  ) { }
+    private restService: RestService,
+    private loadingCtrl: LoadingController
+  ) {
+    console.log(`creating: ${this.constructor.name}`)
+   }
 
   ngOnInit() {
-    
+    console.log(`ngOnInit: ${this.constructor.name}`)
+  }
+
+  ngOnDestroy() {
+    console.log(`ngOnDestroy: ${this.constructor.name}`)
   }
 
   public openPage(page:any): void {
@@ -92,9 +105,17 @@ export class HomeComponent implements OnInit {
   }
 
   public doLogout() {
+    console.log("logout clicked")
+    this.loading.present()
+
     this.restService.logoutStub().subscribe(
       (response:AUTH_STATUS) => {
+        console.log(`login response: ${response.status}`)
+        this.loading.dismiss()
         this.events.publish(response.status);
+      },
+      (error) => {
+        this.loading.dismiss()
       }
     )
   }

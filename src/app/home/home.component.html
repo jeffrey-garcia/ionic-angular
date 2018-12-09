@@ -38,41 +38,47 @@
         <ion-title>Side Menu</ion-title>
       </ion-toolbar>
     </ion-header>
+
     <ion-content>
       <ion-list>
-          <ion-item>
+        <ion-item>
             Close Side Menu
             <button ion-button item-end icon-only clear menuClose>
                 <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
-          <ion-item>
-            Logout
-            <button ion-button item-end icon-only clear (click)="doLogout()">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
+          
           <ion-item>
             Dashboard
             <button ion-button item-end icon-only clear (click)="changeTab(0)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
+          
           <ion-item>
             Leads
             <button ion-button item-end icon-only clear (click)="changeTab(1)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
+          
           <ion-item>
             Activities
             <button ion-button item-end icon-only clear (click)="changeTab(2)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
+          
           <ion-item>
             Goals
             <button ion-button item-end icon-only clear (click)="changeTab(3)">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-item>
+          
+          <ion-item>
+            Logout
+            <button ion-button item-end icon-only clear (click)="doLogout()">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>

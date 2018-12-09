@@ -19,7 +19,9 @@ export class RestService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+    console.log(`creating: ${this.constructor.name}`)
+  }
 
   getNotifications(): Observable<any> {
     return this.http.get<any>(

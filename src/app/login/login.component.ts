@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 
-import { Events } from 'ionic-angular';
+import { Events, LoadingController } from 'ionic-angular';
 import { RestService, AUTH_STATUS } from '../rest.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  private loading = this.loadingCtrl.create({
+    spinner: 'ios',
+    cssClass: 'my-loading-class',
+    dismissOnPageChange: true
+  });
 
   constructor(
+    private ngZone: NgZone,
     private restService:RestService,
-    private events: Events
+    private events: Events,
+    public loadingCtrl: LoadingController
   ) { 
     console.log(`creating: ${this.constructor.name}`)
   }
@@ -25,10 +32,18 @@ export class LoginComponent implements OnInit {
     console.log(`ngOnDestroy: ${this.constructor.name}`)
   }
 
-  public doLogin() {
+  public doLogin():void {
+    console.log("login clicked")
+    this.loading.present()
+    
     this.restService.loginStub().subscribe(
       (response:AUTH_STATUS) => {
+        console.log(`login response: ${response.status}`)
+        this.loading.dismiss()
         this.events.publish(response.status);
+      },
+      (error) => {
+        this.loading.dismiss()
       }
     )
   }
