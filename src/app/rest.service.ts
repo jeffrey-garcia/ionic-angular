@@ -6,7 +6,8 @@ import { delay, tap } from 'rxjs/operators';
 
 export enum STATUS {
   LOGIN_COMPLETED = "LOGIN_COMPLETED",
-  LOGOUT_COMPLETED = "LOGOUT_COMPLETED"
+  LOGOUT_COMPLETED = "LOGOUT_COMPLETED",
+  GET_DATA_COMPLETED = "GET_DATA_COMPLETED"
 }
 
 export interface AUTH_STATUS {
@@ -48,6 +49,21 @@ export class RestService {
         status: STATUS.LOGOUT_COMPLETED
       }
     ).pipe(delay(2500)) // simulate success response
+  }
+
+  getDataStub(): Observable<any> {
+    return Observable.of(
+      {
+        status: STATUS.GET_DATA_COMPLETED
+      }
+    ).pipe(
+      delay(5000),
+      tap(
+        (resp) => {
+          console.log(`get data resp: ${JSON.stringify(resp)}`)
+        }
+      )
+    ) // simulate success response
   }
 
 }

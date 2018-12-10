@@ -23,7 +23,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-tabs selectedIndex="0" #tabsRef (ionChange)="tabChanged($event)">
+  <ion-tabs [selectedIndex]="selectedTab" #tabsRef (ionChange)="tabChanged($event)">
     <!-- explicitly use md icons as some of the ios icons are missing in ionicons-icon.scss-->
     <ion-tab [root]="tab0Root" tabTitle="Dashboard" tabIcon="md-water" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
     <ion-tab [root]="tab1Root" tabTitle="Leads" tabIcon="md-leaf" tabBadge="5" tabBadgeStyle="danger"></ion-tab>

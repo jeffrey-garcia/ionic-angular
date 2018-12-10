@@ -52,6 +52,8 @@ export class HomeComponent implements OnInit {
   leads_search:any = LeadsSearchComponent;
   leads_filter:any = LeadsSearchComponent;
 
+  selectedTab:number;
+
   constructor(
     private app:App,
     private menuCtrl: MenuController,
@@ -64,10 +66,37 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log(`ngOnInit: ${this.constructor.name}`)
+
+    // force navigate to tab index page 3
+    this.selectedTab = 0;
   }
 
   ngOnDestroy() {
     console.log(`ngOnDestroy: ${this.constructor.name}`)
+  }
+
+  ionViewDidLoad() {
+    console.log(`ionViewDidLoad: ${this.constructor.name}`)
+  }
+
+  ionViewWillEnter() {
+    console.log(`ionViewWillEnter: ${this.constructor.name}`)
+  }
+
+  ionViewDidEnter() {
+    console.log(`ionViewDidEnter: ${this.constructor.name}`)
+  }
+
+  ionViewWillLeave() {
+    console.log(`ionViewWillLeave: ${this.constructor.name}`)
+  }
+
+  ionViewDidLeave() {
+    console.log(`ionViewDidLeave: ${this.constructor.name}`)
+  }
+
+  ionViewWillUnload() {
+    console.log(`ionViewWillUnload: ${this.constructor.name}`)
   }
 
   public openPage(page:any): void {
