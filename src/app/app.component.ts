@@ -39,7 +39,8 @@ export class AppComponent {
       zone: this.ngZone,
       component: this,
       cordovaReady: () => this.cordovaReady(),
-      notificationReceived: () => this.getNotifications()
+      notificationReceived: () => this.getNotifications(),
+      // loginComplete: () => this.restService.loginComplete()
     };
   }
 
