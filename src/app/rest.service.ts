@@ -64,70 +64,66 @@ export class RestService {
   }
 
   loginStub(): Observable<any> {
+    // simulate success response
     return Observable.of(
       {
         status: STATUS.LOGIN_COMPLETED
       }
-    ).pipe(delay(2500)) // simulate success response
+    ).pipe(delay(2500)) 
   }
 
   logoutStub(): Observable<any> {
+    // simulate success response
     return Observable.of(
       {
         status: STATUS.LOGOUT_COMPLETED
       }
-    ).pipe(delay(2500)) // simulate success response
+    ).pipe(delay(2500)) 
   }
 
   getDataStub(): Observable<any> {
     // simulate success response
-    // return Observable.of(
-    //   {
-    //     status: STATUS.GET_DATA_COMPLETED
-    //   }
-    // ).pipe(
-    //   delay(2500),
-    //   tap(
-    //     (resp) => {
-    //       console.log(`get data resp: ${JSON.stringify(resp)}`)
-    //     }
-    //   )
-    // ) 
+    return Observable.of(
+      {
+        status: STATUS.GET_DATA_COMPLETED
+      }
+    ).pipe(
+      delay(2500),
+      tap(
+        (resp) => {
+          console.log(`get data resp: ${JSON.stringify(resp)}`)
+        }
+      )
+    ) 
  
     // simulate error response
     // return Observable.throw("An error has occurred!") 
     
     // cannot be captured by the error routine in the subsriber, need to use try/catch
-    throw new Error('An error has occured 2!');
+    // throw new Error('An error has occured 2!');
   }
 
   getData(): Observable<any> {
     console.log("getData()")
     return Observable.create(
-      (observer) => {
+      (observer:any) => {
         try {
           this.getDataStub()
           .finally(
             () => {
+              // put the clean-up routine here in the finally block
               console.log("finally")
-              this.getDataStub().subscribe(
-                (respone) => {
-                  observer.next(true)
-                  observer.complete()
-                },
-                (error) => {
-                  observer.error(false)
-                  observer.complete()
-                }
-              )
+              observer.complete()
             }
           )
           .subscribe(
             (respone) => {
               console.log(`onNext: ${respone}`)
+              observer.next(true)
             },
             (error) => {
               console.log(`onError: ${error}`)
+              observer.error(error)
             },
             () => {
               console.log(`onCompleted`)

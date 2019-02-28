@@ -36,23 +36,28 @@ export class LoginComponent implements OnInit {
     console.log("login clicked")
     this.loading.present()
     
-    // this.restService.loginStub().subscribe(
-    //   (response:AUTH_STATUS) => {
-    //     console.log(`login response: ${response.status}`)
-    //     this.loading.dismiss()
-    //     this.events.publish(response.status);
-    //   },
-    //   (error) => {
-    //     this.loading.dismiss()
-    //   }
-    // )
-
     // this.restService.login().subscribe(
     //   (error) => {
     //     this.loading.dismiss()
     //   }
     // )
-    
+
+    this.restService.loginStub().subscribe(
+      (response:AUTH_STATUS) => {
+        console.log(`login response: ${response.status}`)
+        this.loading.dismiss()
+        this.events.publish(response.status);
+      },
+      (error) => {
+        this.loading.dismiss()
+      }
+    )
+  }
+
+  public doGetData():void {
+    console.log("get data clicked")
+    this.loading.present()
+
     this.restService.getData().subscribe(
       (response) => {
         console.log(`result? ${response}`)
