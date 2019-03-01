@@ -33,6 +33,8 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
 import { RestService } from './rest.service';
 import { LoginComponent } from './login/login.component';
 
+import { GenieSystemModule } from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,8 @@ import { LoginComponent } from './login/login.component';
       AppComponent, 
       {mode: 'md'} // enforce the theme to material design regardless of running platform
     ),
-    SuperTabsModule.forRoot()
+    SuperTabsModule.forRoot(),
+    GenieSystemModule
   ],
   entryComponents: [
     AppComponent,

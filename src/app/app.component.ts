@@ -10,6 +10,7 @@ import { RestService, STATUS } from './rest.service';
 import { environment } from '../environments/environment';
 import { ActivitiesComponent } from './activities/activities.component';
 import { LoginComponent } from './login/login.component';
+import { UtilService } from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
 
 
 
@@ -31,7 +32,8 @@ export class AppComponent {
     private splashScreen:SplashScreen,
     private push: Push,
     private restService: RestService,
-    private events : Events
+    private events : Events,
+    private utilService: UtilService
   ) {
     console.log(`creating ${this.constructor.name}`);
 
