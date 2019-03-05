@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { 
@@ -33,7 +33,13 @@ import { LeadsSearchComponent } from './leads/leads-search/leads-search.componen
 import { RestService } from './rest.service';
 import { LoginComponent } from './login/login.component';
 
-import { GenieSystemModule } from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
+import { LocalSharedService } from './local/system/service/local-shared.service';
+import { 
+  GenieSystemModule, 
+  SharedService, 
+  AppHttpInterceptor 
+} from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
+import { GenieAppUiModule } from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/app/app-ui.module';
 
 @NgModule({
   declarations: [
@@ -65,7 +71,8 @@ import { GenieSystemModule } from 'manulife-genie-ionic-angular-core/dist/assets
       {mode: 'md'} // enforce the theme to material design regardless of running platform
     ),
     SuperTabsModule.forRoot(),
-    GenieSystemModule
+    GenieSystemModule,
+    GenieAppUiModule
   ],
   entryComponents: [
     AppComponent,
@@ -87,7 +94,15 @@ import { GenieSystemModule } from 'manulife-genie-ionic-angular-core/dist/assets
       provide: ErrorHandler, 
       useClass: IonicErrorHandler
     },
-    RestService
+    RestService,
+    LocalSharedService,
+    // use local singleton service providers to override core
+    { provide: SharedService, useExisting: LocalSharedService },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AppHttpInterceptor,
+      multi: true
+	  },
   ],
   bootstrap: [IonicApp]
 })

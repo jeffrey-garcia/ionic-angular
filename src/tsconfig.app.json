@@ -12,6 +12,7 @@
   ],
   "include": [
     "./**/*.ts",
+    "../node_modules/manulife-mobile-ionic-angular-ui/dist/index.ts",
     "../node_modules/manulife-genie-ionic-angular-core/dist/index.ts"
   ]
 }

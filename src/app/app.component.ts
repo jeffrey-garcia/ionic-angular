@@ -11,12 +11,17 @@ import { environment } from '../environments/environment';
 import { ActivitiesComponent } from './activities/activities.component';
 import { LoginComponent } from './login/login.component';
 
+import { LocalSharedService } from './local/system/service/local-shared.service';
+
 import { 
   UtilService,
   OauthService,
   SharedService, 
-  AppPublishEvents 
 } from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
+
+import {
+  AppPublishEvents
+} from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/app/app-ui.module';
 
 
 @Component({
@@ -38,7 +43,7 @@ export class AppComponent {
     private push: Push,
     private restService: RestService,
     private events : Events,
-    private utilService: UtilService
+    private localSharedService: LocalSharedService
   ) {
     console.log(`creating ${this.constructor.name}`);
 
