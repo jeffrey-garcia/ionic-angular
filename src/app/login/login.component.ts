@@ -3,6 +3,11 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Events, LoadingController } from 'ionic-angular';
 import { RestService, AUTH_STATUS } from '../rest.service';
 
+import { 
+  ConfigFactory, 
+  CurrencyConfig 
+} from 'manulife-genie-ionic-angular-core/dist/assets/genie-core/system/system.module';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +20,10 @@ export class LoginComponent implements OnInit {
     dismissOnPageChange: true
   });
 
+  public title = 'Ionic Angular App';
+  public currencySymbol?:string;
+  public currencyCode?:string;
+
   constructor(
     private ngZone: NgZone,
     private restService:RestService,
@@ -26,6 +35,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     console.log(`ngOnInit: ${this.constructor.name}`)
+
+    let currencyConfig:CurrencyConfig = ConfigFactory.getCurrency();
+    this.currencySymbol = currencyConfig.supportedCurrencies[0].symbol;
+    this.currencyCode = currencyConfig.supportedCurrencies[0].alphaCode;
   }
 
   ngOnDestroy() {

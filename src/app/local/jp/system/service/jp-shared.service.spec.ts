@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { LocalSharedService } from './local-shared.service';
+import { JpSharedService } from './jp-shared.service';
 
 describe('PocSharedService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [LocalSharedService]
+      providers: [JpSharedService]
     });
   });
 
-  it('should be created', inject([LocalSharedService], (service: LocalSharedService) => {
+  it('should be created', inject([JpSharedService], (service: JpSharedService) => {
     expect(service).toBeTruthy();
   }));
 });

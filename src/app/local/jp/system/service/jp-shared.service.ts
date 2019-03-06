@@ -9,7 +9,7 @@ import { SharedService, Months } from 'manulife-genie-ionic-angular-core/dist/as
 import * as divisions from '../data/address.json';
 
 @Injectable()
-export class LocalSharedService extends SharedService {
+export class JpSharedService extends SharedService {
 
   protected _divisions : any = (<any>divisions);
 

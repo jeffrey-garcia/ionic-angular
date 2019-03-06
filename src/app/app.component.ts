@@ -5,13 +5,15 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
+import { TranslateService } from "@ngx-translate/core";
+
 import { HomeComponent } from './home/home.component';
 import { RestService, STATUS } from './rest.service';
 import { environment } from '../environments/environment';
 import { ActivitiesComponent } from './activities/activities.component';
 import { LoginComponent } from './login/login.component';
 
-import { LocalSharedService } from './local/system/service/local-shared.service';
+import { JpSharedService } from './local/jp/system/service/jp-shared.service';
 
 import { 
   UtilService,
@@ -43,7 +45,8 @@ export class AppComponent {
     private push: Push,
     private restService: RestService,
     private events : Events,
-    private localSharedService: LocalSharedService
+    private translate: TranslateService,
+    private jpSharedService: JpSharedService
   ) {
     console.log(`creating ${this.constructor.name}`);
 
@@ -58,6 +61,8 @@ export class AppComponent {
 
   ngOnInit(): void {
     console.log(`ngOnInit ${this.constructor.name}`);
+
+    this.translate.use(this.jpSharedService.locale);
 
     // if (environment.production == false) {
       // console.log(`in NgZone? ${NgZone.isInAngularZone()}`)
