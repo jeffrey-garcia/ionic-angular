@@ -21,7 +21,8 @@
       "styles": [
         "styles.css",
         "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "ionic/variables.scss"
+        "ionic/variables.scss",
+        "../node_modules/manulife-genie-ionic-angular-core/dist/assets/genie-core/app/theme/app-ui-theme.scss"
       ],
       "scripts": [
         "scripts/coreHybridApp.js"
