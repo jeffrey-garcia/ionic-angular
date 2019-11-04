@@ -17,7 +17,7 @@ export const environment = {
   languages: [`${SystemLocale.EN}-us'`, `${SystemLocale.JA}-${SystemCountry.JP}`],
   language_def: SystemLocale.JA,
   currencies: [
-    SystemCurrency.JPY
+    SystemCurrency.JPY()
   ],
 
   salesforce: {
