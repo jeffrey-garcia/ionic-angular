@@ -17,7 +17,7 @@ export const environment = {
   languages: [`${SystemLocale.EN}-us'`, `${SystemLocale.JA}-${SystemCountry.JP}`],
   language_def: SystemLocale.JA,
   currencies: [
-    SystemCurrency.JPY()
+    SystemCurrency.JPY
   ],
 
   salesforce: {
@@ -35,6 +35,22 @@ export const environment = {
     exportLog: 'https://localhost/services/apexrest/exportLog',
     clearUserSession: 'https://localhost/services/apexrest/clearUserSession',
     call: 'https://localhost/services/apexrest/call'
+  },
+
+  API_BASE_PATH: '',
+
+  digitalLeads: {
+    actionTimeoutWarningInSec: 0,
+    actionTimeoutInSec: 0,
+    countdownPeriodInMs: 0 
+  },
+
+  activity: {
+    backDateDays: 0
+  },
+
+  goal: {
+      weeklyGoalSettingThreshold: 0
   },
 
 };
