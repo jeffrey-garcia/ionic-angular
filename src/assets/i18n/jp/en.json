@@ -1,4 +1,5 @@
 {
     "LOGIN": "LOGIN",
-    "GET_DATA": "GET DATA"
+    "GET_DATA": "GET DATA",
+    "CURRENT_MONTH": "CURRENT MONTH: {{month}}"
 }

@@ -1,4 +1,5 @@
 {
     "LOGIN": "登錄",
-    "GET_DATA": "獲取數據"
+    "GET_DATA": "獲取數據",
+    "CURRENT_MONTH": "CURRENT MONTH: {{month}}"
 }

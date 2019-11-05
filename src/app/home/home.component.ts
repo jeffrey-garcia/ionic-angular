@@ -16,7 +16,8 @@ import { RestService, AUTH_STATUS } from '../rest.service';
 })
 export class HomeComponent implements OnInit {
   private loading = this.loadingCtrl.create({
-    spinner: 'ios',
+    content: '',
+    spinner: 'dots',
     cssClass: 'my-loading-class',
     dismissOnPageChange: true
   });
@@ -31,15 +32,15 @@ export class HomeComponent implements OnInit {
       component: DashboardComponent
     },
     {
-      title: 'Leads',
+      title: 'Code',
       component: LeadsComponent
     },
     {
-      title: 'Activities',
+      title: 'Task',
       component: ActivitiesComponent
     },    
     {
-      title: 'Goals',
+      title: 'History',
       component: GoalsComponent
     }
   ];

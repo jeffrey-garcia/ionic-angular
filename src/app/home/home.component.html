@@ -25,10 +25,10 @@
 <ion-content>
   <ion-tabs [selectedIndex]="selectedTab" #tabsRef (ionChange)="tabChanged($event)">
     <!-- explicitly use md icons as some of the ios icons are missing in ionicons-icon.scss-->
-    <ion-tab [root]="tab0Root" tabTitle="Dashboard" tabIcon="md-water" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
-    <ion-tab [root]="tab1Root" tabTitle="Leads" tabIcon="md-leaf" tabBadge="5" tabBadgeStyle="danger"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="Activities" tabIcon="md-flame"></ion-tab>
-    <ion-tab [root]="tab3Root" tabTitle="Goals" tabIcon="md-magnet"></ion-tab>
+    <ion-tab [root]="tab0Root" tabTitle="Dashboard" tabIcon="md-analytics" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="tab1Root" tabTitle="Code" tabIcon="md-build" tabBadge="5" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Task" tabIcon="md-calendar"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="History" tabIcon="md-clipboard"></ion-tab>
   </ion-tabs>
 </ion-content>
 
@@ -56,21 +56,21 @@
           </ion-item>
           
           <ion-item>
-            Leads
+            Code
             <button ion-button item-end icon-only clear (click)="changeTab(1)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
           
           <ion-item>
-            Activities
+            Task
             <button ion-button item-end icon-only clear (click)="changeTab(2)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-item>
           
           <ion-item>
-            Goals
+            History
             <button ion-button item-end icon-only clear (click)="changeTab(3)">
               <ion-icon name="arrow-forward"></ion-icon>
             </button>

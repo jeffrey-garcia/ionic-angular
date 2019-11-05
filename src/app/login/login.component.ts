@@ -3,6 +3,8 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { Events, LoadingController } from 'ionic-angular';
 import { RestService, AUTH_STATUS } from '../rest.service';
 
+import * as moment from 'moment';
+
 import { 
   ConfigFactory, 
   CurrencyConfig 
@@ -15,12 +17,13 @@ import {
 })
 export class LoginComponent implements OnInit {
   private loading = this.loadingCtrl.create({
-    spinner: 'ios',
+    content: '',
+    spinner: 'dots',
     cssClass: 'my-loading-class',
     dismissOnPageChange: true
   });
 
-  public title = 'Ionic Angular App';
+  public title = 'RSF Compliance Portal';
   public currencySymbol?:string;
   public currencyCode?:string;
 
@@ -83,4 +86,8 @@ export class LoginComponent implements OnInit {
     )
   }
 
+  public getMonthName(): any {
+    let monthName = moment(new Date().toISOString()).format('MMMM');
+    return { month: monthName };
+  }
 }
