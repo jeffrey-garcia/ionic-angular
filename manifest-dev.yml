@@ -1,0 +1,11 @@
+---
+applications:
+- name: demo-rsf-compliance-portal
+  memory: 64M
+  disk_quota: 128M
+  instances: 1
+  host: demo-rsf-compliance-portal
+  domains:
+  - apps.sea.preview.pcf.manulife.com
+  path: dist
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
