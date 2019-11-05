@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild('tabsRef') tabsRef: Tabs;
 
+  rootPage:any = DashboardComponent;
   title:string = "";
 
   tabPages = [
@@ -114,7 +115,8 @@ export class HomeComponent implements OnInit {
 
   /* programmetically changing the tab */
   public changeTab(id:any): void {
-    this.tabsRef.select(id);
+    // this.tabsRef.select(id);
+    this.rootPage = this.tabPages[id].component;
     this.menuCtrl.close();
   }
 
@@ -132,6 +134,10 @@ export class HomeComponent implements OnInit {
       document.getElementById("searchIcon").style.display = "inline";
       document.getElementById("filterIcon").style.display = "inline";
     }
+  }
+
+  public closeMenu():void {
+    this.menuCtrl.close();
   }
 
   public doLogout() {

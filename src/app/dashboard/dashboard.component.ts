@@ -10,6 +10,8 @@ import { RestService } from '../rest.service';
 })
 export class DashboardComponent implements OnInit {
 
+  public title:string = "Dashboard";
+
   constructor(
     private restService:RestService,
     private navCtrl:NavController

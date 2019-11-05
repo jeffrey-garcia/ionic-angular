@@ -1,5 +1,15 @@
-<ion-content>
+<ion-header>
+    <ion-navbar align-title="center" #content>
+        <ion-buttons left>
+            <button ion-button menuToggle icon-only>
+            <ion-icon name='menu'></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>{{ title }}</ion-title>
+    </ion-navbar>    
+</ion-header>
 
+<ion-content>
     <ion-card>
             <ion-card-header>
                 dashboard works!
@@ -8,5 +18,4 @@
                 bla bla bla
             </ion-card-content>
     </ion-card>
-    
 </ion-content>

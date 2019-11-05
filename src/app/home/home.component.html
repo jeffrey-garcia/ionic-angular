@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
   <ion-navbar align-title="center" #content>
     <ion-buttons left>
       <button ion-button menuToggle icon-only>
@@ -20,68 +20,74 @@
         </button>
     </ion-buttons>
   </ion-navbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content>
+<!-- <ion-content>
   <ion-tabs [selectedIndex]="selectedTab" #tabsRef (ionChange)="tabChanged($event)">
-    <!-- explicitly use md icons as some of the ios icons are missing in ionicons-icon.scss-->
     <ion-tab [root]="tab0Root" tabTitle="Dashboard" tabIcon="md-analytics" tabBadge="3" tabBadgeStyle="danger"></ion-tab>
     <ion-tab [root]="tab1Root" tabTitle="Code" tabIcon="md-build" tabBadge="5" tabBadgeStyle="danger"></ion-tab>
     <ion-tab [root]="tab2Root" tabTitle="Task" tabIcon="md-calendar"></ion-tab>
     <ion-tab [root]="tab3Root" tabTitle="History" tabIcon="md-clipboard"></ion-tab>
   </ion-tabs>
-</ion-content>
+</ion-content> -->
 
-<ion-menu side="left" type="overlay" [content]="content">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Side Menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
+<ion-split-pane>
+  <ion-menu side="left" type="overlay" [content]="content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Side Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-    <ion-content>
-      <ion-list>
-        <ion-item>
-            Close Side Menu
-            <button ion-button item-end icon-only clear menuClose>
+      <ion-content>
+        <ion-list>
+            <!-- <ion-item (click)="closeMenu()">
+              <ion-label>Close Menu</ion-label>
+              <ion-icon name="md-close" slot="end" item-end></ion-icon>
+            </ion-item> -->
+            
+            <ion-item (click)="changeTab(0)">
+              <ion-label>Dashboard</ion-label>
+              <ion-icon name="md-analytics" slot="end" item-end></ion-icon>
+              <!-- <button ion-button item-end icon-only clear (click)="changeTab(0)">
                 <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            Dashboard
-            <button ion-button item-end icon-only clear (click)="changeTab(0)">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            Code
-            <button ion-button item-end icon-only clear (click)="changeTab(1)">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            Task
-            <button ion-button item-end icon-only clear (click)="changeTab(2)">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            History
-            <button ion-button item-end icon-only clear (click)="changeTab(3)">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-          
-          <ion-item>
-            Logout
-            <button ion-button item-end icon-only clear (click)="doLogout()">
-              <ion-icon name="arrow-forward"></ion-icon>
-            </button>
-          </ion-item>
-      </ion-list>
-    </ion-content>
-</ion-menu>
+              </button> -->
+            </ion-item>
+            
+            <ion-item (click)="changeTab(1)">
+              <ion-label>Code</ion-label>
+              <ion-icon name="md-build" slot="end" item-end></ion-icon>
+              <!-- <button ion-button item-end icon-only clear (click)="changeTab(1)">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>  -->
+            </ion-item>
+            
+            <ion-item (click)="changeTab(2)">
+              <ion-label>Task</ion-label>
+              <ion-icon name="md-clipboard" slot="end" item-end></ion-icon>
+              <!-- <button ion-button item-end icon-only clear (click)="changeTab(2)">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button> -->
+            </ion-item>
+            
+            <ion-item (click)="changeTab(3)">
+              <ion-label>History</ion-label>
+              <ion-icon name="md-calendar" slot="end" item-end></ion-icon>
+              <!-- <button ion-button item-end icon-only clear (click)="changeTab(3)">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button> -->
+            </ion-item>
+            
+            <ion-item (click)="doLogout()">
+              <ion-label>Logout</ion-label>
+              <ion-icon name="md-exit" slot="end" item-end></ion-icon>
+              <!-- <button ion-button item-end icon-only clear (click)="doLogout()">
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button> -->
+            </ion-item>
+        </ion-list>
+      </ion-content>
+  </ion-menu>
+
+  <ion-nav [root]="rootPage" #content main></ion-nav>
+</ion-split-pane>
