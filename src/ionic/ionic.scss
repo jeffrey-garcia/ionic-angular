@@ -142,6 +142,11 @@
 @import "~ionic-angular/platform/cordova.md";
 @import "~ionic-angular/platform/cordova.wp";
 
+@import "~ionic-angular/components/split-pane/split-pane";
+@import "~ionic-angular/components/split-pane/split-pane.ios";
+@import "~ionic-angular/components/split-pane/split-pane.md";
+@import "~ionic-angular/components/split-pane/split-pane.wp";
+
 $ionicons-font-path: "~ionicons/dist/fonts";
 @import "~ionicons/dist/scss/ionicons";
 
